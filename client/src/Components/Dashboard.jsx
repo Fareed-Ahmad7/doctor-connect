@@ -58,9 +58,9 @@ const Dashboard = () => {
       <div className="dashboard-right-bio">
         <img className="dash-profile-img" src={s} alt="" />
         <ul>
-          <li className="bio-list">Name : {"sharmas"}</li>
+          <li className="bio-list">Name : {"Fareed"}</li>
           <li className="bio-list">Age : {"20"}</li>
-          <li className="bio-list">Gender : {'M'}</li>
+          <li className="bio-list">Gender : {'Male'}</li>
           <li className="bio-list">Disease : {"Kidney problem"}</li>
           <li className="bio-list">prescrtipn : {"something"}</li>
           <li className="bio-list">Date : {"06/06/2023"}</li>
