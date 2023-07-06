@@ -1,6 +1,6 @@
 import React from "react";
 import "../Styles/List.css";
-import p from "../Images/p.jpg"
+import p from "../Images/p.png"
 
 const List = () => {
   return (
