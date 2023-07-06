@@ -8,7 +8,8 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from "./Common/LandingPage";
 import Navbar from "./Common/Navbar";
 import Footer from "./Common/Footer";
-import Dashboard from "./Components/Dashboard";
+import Paitents from "./Components/Paitents";
+import Dashboard from "./Components/Dashboard"
 
 function App() {
   return (
@@ -16,9 +17,11 @@ function App() {
     <Navbar />
       <Routes>
         <Route path="/" Component={LandingPage} />
-        <Route path="/signup" Component={SignUp} />
-        <Route path="/signin" Component={SignIn} />
-        <Route path="/dashboard" Component={Dashboard}/>
+        <Route path="/SignUp" Component={SignUp} />
+        <Route path="/SignIn" Component={SignIn} />
+        <Route path="/list" Component={Paitents} />
+        <Route path="/dashboard/patient/:id" Component={Dashboard} />
+      
       </Routes>
       <Footer />
     </div>
