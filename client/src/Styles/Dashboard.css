@@ -1,0 +1,61 @@
+.dashboard-main{
+    background-color: pink;
+    height: 80vh;
+    display: grid;
+    grid-template-columns: auto 18rem;
+}
+.left-vitals{
+    border: 1px solid red;
+    margin: 8px;
+
+    display: flex;
+    flex-direction: column;
+}
+.dashboard-right-bio{
+    border: 1px solid green;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.main-vitals{
+    border: 1px solid black;
+    height: 26rem;
+    margin: 4px;
+    display: flex;
+    flex-direction: row;
+    
+}
+.patient-current-feeling{
+    border: 1px solid blue;
+    margin: 4px;
+    height: 8rem;
+}
+.vital{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid navy;
+    margin: 4px;
+    min-width: 31%;
+    padding: 5px;
+}
+.vital-graph{
+    border: 1px solid green;
+}
+.vital-count{
+    text-align: center;
+}
+.dash-profile-img{
+    margin: 2rem;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid blue;
+    border-radius: 50%;
+}
+.bio-list{
+    list-style-type: none;
+    margin: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
