@@ -1,10 +1,11 @@
-import React from 'react'
 import "../Styles/SignIn.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import { FirebaseSignIn } from "../index";
+// import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+  // const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,22 +19,7 @@ const SignIn = () => {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    const data = {
-      email,
-      password,
-    };
-    console.log("handlingSignIn");
-    console.log(data);
-
-    try {
-      const response = await axios.post("http://localhost:4000/signin", {
-        email,
-        password,
-      });
-      console.log(response.data); // handle the response as per your requirement
-    } catch (error) {
-      console.error(error);
-    }
+    FirebaseSignIn(email, password);
   };
 
   return (

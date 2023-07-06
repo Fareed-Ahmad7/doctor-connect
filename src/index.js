@@ -1,45 +1,45 @@
-import express from "express";
-import dotenv from "dotenv";
-import bodyParser from "body-parser";
+// import express from "express";
+// import dotenv from "dotenv";
+// import bodyParser from "body-parser";
 
-import cors from "cors";
+// import cors from "cors";
 
 //Routes
 // import authRoutes from './routes/authRoutes.js'
 
 
-const app = express();
-dotenv.config();
-app.use(cors());
-app.use(bodyParser.json());
+// const app = express();
+// dotenv.config();
+// app.use(cors());
+// app.use(bodyParser.json());
 
 //Routes
 // app.use('/auth',authRoutes);
 // app.use('/question',questionRoutes);
 
-app.get("/", (req, res) => {
-  res.send("hello from SkillShow entry point");
-});
+// app.get("/", (req, res) => {
+//   res.send("hello from SkillShow entry point");
+// });
 
-app.post("/signup", (req, res) => {
-    const {email,password,firstName, lastName, selectedRole} = req.body
-    console.log(email, password, firstName, lastName, selectedRole);
-    FirebaseSignup(email, password, firstName, lastName, selectedRole);
-    //  res.redirect("/dashboard");
-    //  next();
+// app.post("/signup", (req, res) => {
+//     const {email,password,firstName, lastName, selectedRole} = req.body
+//     console.log(email, password, firstName, lastName, selectedRole);
+//     FirebaseSignup(email, password, firstName, lastName, selectedRole);
+//     //  res.redirect("/dashboard");
+//     //  next();
 
-});
+// });
 
-app.post("/signIn", (req, res) => {
-  const { email, password } = req.body;
-  console.log(email, password);
-  FirebaseSignIn(email,password);
-});
+// app.post("/signIn", (req, res) => {
+//   const { email, password } = req.body;
+//   console.log(email, password);
+//   FirebaseSignIn(email,password);
+// });
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log("server started...");
-  // connectDB();
-});
+// app.listen(process.env.PORT || 4000, () => {
+//   console.log("server started...");
+//   // connectDB();
+// });
 
 import { initializeApp } from "firebase/app";
 import {
@@ -51,11 +51,14 @@ import {
 } from "firebase/firestore/lite";
 import {
   getAuth,
-  GoogleAuthProvider,
+  // GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
+  // onAuthStateChanged,
 } from "firebase/auth";
+// import { useNavigate } from "react-router-dom";
+
+
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -72,7 +75,7 @@ const db = getFirestore(firebaseApp);
 const auth = getAuth();
 // const cUser = auth.currentUser;
 // const provider = new GoogleAuthProvider();
-// export {auth,provider};
+
 
 async function getMessage(db) {
   const citiesCol = collection(db, "test");
@@ -81,7 +84,7 @@ async function getMessage(db) {
   console.log(cityList);
   return cityList;
 }
-// getMessage(db);
+getMessage(db);
 
 // signup users
 async function FirebaseSignup(mail, pass, fName, lName, selecRole) {
@@ -93,9 +96,9 @@ async function FirebaseSignup(mail, pass, fName, lName, selecRole) {
         last_name: lName,
         role: selecRole,
       });
-      // window.open("/dashboard");
       
-      // console.log("user created:", cred.user);
+      console.log("user created:", cred.user);
+      window.open("/list");
       // console.log("uid", user.uid);
 
       //   signUpFormPage.reset();
@@ -105,13 +108,15 @@ async function FirebaseSignup(mail, pass, fName, lName, selecRole) {
     });
 }
 
+
 // signin users
 async function FirebaseSignIn(mail, pass) {
-    signInWithEmailAndPassword(auth, mail, pass)
-    .then((userCredential) => {
-        // Signed in
+  signInWithEmailAndPassword(auth, mail, pass)
+  .then((userCredential) => {
+    // Signed in
         const user = userCredential.user;
-        // console.log(user)
+        console.log(user)
+        window.location = "/list";
         // console.log('uid',user.uid)
         // console.log('cu',cUser)
         // console.log('email',cUser.email)
@@ -120,14 +125,15 @@ async function FirebaseSignIn(mail, pass) {
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage)
+        console.log(errorCode,errorMessage)
+        console.log("invalid signin")
     });
 }
 
-// subscribing to auth changes
-onAuthStateChanged(auth,(user)=>{
-      console.log("user status changed:",user);
-})
+// // subscribing to auth changes
+// onAuthStateChanged(auth,(user)=>{
+//       console.log("user status changed:",user);
+// })
 
 // auth.onAuthStateChanged((user) => {
 //   if (user) {
@@ -157,3 +163,4 @@ onAuthStateChanged(auth,(user)=>{
 
 // console.log("cu", cUser);
 // console.log("email", cUser.email);
+export { auth, FirebaseSignup , FirebaseSignIn};
