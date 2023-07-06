@@ -1,10 +1,11 @@
 import React from 'react'
 import "../Styles/SignIn.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
 const SignIn = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +25,7 @@ const SignIn = () => {
     };
     console.log("handlingSignIn");
     console.log(data);
-
+    navigate('/list')
     try {
       const response = await axios.post("http://localhost:4000/signin", {
         email,
