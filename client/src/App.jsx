@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from "./Common/LandingPage";
 import Navbar from "./Common/Navbar";
 import Footer from "./Common/Footer";
+import Dashboard from "./Components/Dashboard";
 
 function App() {
   return (
@@ -17,10 +18,13 @@ function App() {
         <Route path="/" Component={LandingPage} />
         <Route path="/signup" Component={SignUp} />
         <Route path="/signin" Component={SignIn} />
+        <Route path="/dashboard" Component={Dashboard}/>
       </Routes>
       <Footer />
     </div>
+
   );
 }
 
 export default App;
+
