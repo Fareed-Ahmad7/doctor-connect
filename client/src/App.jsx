@@ -6,20 +6,20 @@ import SignIn from './Common/SignIn'
 import SignUp from './Common/SignUp'
 import {Routes,Route} from "react-router-dom"
 
+import List from "./Components/List";
 
 function App() {
- 
-
   return (
     <>
-     <Routes>
-      <Route   path="/" Component={SignIn}/>
-      <Route   path="/SignUp" Component={SignUp}/>
-      <Route   path="/SignIn" Component={SignIn}/>
-     
+      <Routes>
+        <Route path="/" Component={SignIn} />
+        <Route path="/SignUp" Component={SignUp} />
+        <Route path="/SignIn" Component={SignIn} />
+        <Route path="/list" Component={List} />
+        {/* <Route   path="/D" Component={DashBoard}/> */}
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
