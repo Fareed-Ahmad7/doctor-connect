@@ -1,7 +1,7 @@
 .SignUp-Form{
     display: grid;
     place-items: center;
-    height: 100vh;
+    margin: 1rem;
 }
 
 .signUpForm {
