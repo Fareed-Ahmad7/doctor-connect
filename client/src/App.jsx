@@ -9,7 +9,7 @@ import LandingPage from "./Common/LandingPage";
 import Navbar from "./Common/Navbar";
 import Footer from "./Common/Footer";
 import Paitents from "./Components/Paitents";
-
+import Dashboard from "./Components/Dashboard"
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Route path="/SignUp" Component={SignUp} />
         <Route path="/SignIn" Component={SignIn} />
         <Route path="/list" Component={Paitents} />
+        <Route path="/dashboard/patient/:id" Component={Dashboard} />
       
       </Routes>
       <Footer />
@@ -29,3 +30,4 @@ function App() {
 }
 
 export default App;
+
