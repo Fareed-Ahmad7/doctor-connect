@@ -60,7 +60,7 @@ const Paitents = () => {
       <div className="card">
         <header className="">
           <h2>Paitents</h2>
-          <Link to="/Id" >
+          <Link to="/Id:id" >
           <div className="FollowersCard">
             {persons &&
               persons.map((person, id) => {
