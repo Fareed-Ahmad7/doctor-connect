@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 import "../Styles/SignIn.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -37,8 +37,11 @@ const SignIn = () => {
   };
 
   return (
-    <>
-      <div className="login-box">
+    
+   <>
+   <div className='login-main' >
+   <div className="login-box">
+
         <form>
           <p className="title">Login</p>
           <div className="user-box">
@@ -72,8 +75,10 @@ const SignIn = () => {
           </p>
         </div>
       </div>
-    </>
-  );
-};
+      </div>
+   </>
+  )
+}
+
 
 export default SignIn;
