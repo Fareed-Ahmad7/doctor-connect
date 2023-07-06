@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 const SignIn = () => {
   return (
    <>
+   <div className='login-main' >
    <div className="login-box">
         <form>
           <p className="title">Login</p>
@@ -26,7 +27,7 @@ const SignIn = () => {
           </p>
         </div>
       </div>
-   
+      </div>
    </>
   )
 }
