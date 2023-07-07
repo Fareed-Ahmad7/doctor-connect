@@ -20,7 +20,7 @@ function App() {
         <Route path="/SignUp" Component={SignUp} />
         <Route path="/SignIn" Component={SignIn} />
         <Route path="/list" Component={Paitents} />
-        <Route path="/dashboard/patient/:id" Component={Dashboard} />
+        <Route path="/dashboard/:id" Component={Dashboard} />
       </Routes>
       <Footer />
     </div>
