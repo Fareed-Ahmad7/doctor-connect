@@ -1,45 +1,3 @@
-// import express from "express";
-// import dotenv from "dotenv";
-// import bodyParser from "body-parser";
-
-// import cors from "cors";
-
-//Routes
-// import authRoutes from './routes/authRoutes.js'
-
-
-// const app = express();
-// dotenv.config();
-// app.use(cors());
-// app.use(bodyParser.json());
-
-//Routes
-// app.use('/auth',authRoutes);
-// app.use('/question',questionRoutes);
-
-// app.get("/", (req, res) => {
-//   res.send("hello from SkillShow entry point");
-// });
-
-// app.post("/signup", (req, res) => {
-//     const {email,password,firstName, lastName, selectedRole} = req.body
-//     console.log(email, password, firstName, lastName, selectedRole);
-//     FirebaseSignup(email, password, firstName, lastName, selectedRole);
-//     //  res.redirect("/dashboard");
-//     //  next();
-
-// });
-
-// app.post("/signIn", (req, res) => {
-//   const { email, password } = req.body;
-//   console.log(email, password);
-//   FirebaseSignIn(email,password);
-// });
-
-// app.listen(process.env.PORT || 4000, () => {
-//   console.log("server started...");
-//   // connectDB();
-// });
 
 import { initializeApp } from "firebase/app";
 import {
@@ -47,6 +5,7 @@ import {
   collection,
   getDocs,
   setDoc,
+  getDoc,
   doc,
 } from "firebase/firestore/lite";
 import {
@@ -57,8 +16,6 @@ import {
   // onAuthStateChanged,
 } from "firebase/auth";
 // import { useNavigate } from "react-router-dom";
-
-
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -75,7 +32,6 @@ const db = getFirestore(firebaseApp);
 const auth = getAuth();
 // const cUser = auth.currentUser;
 // const provider = new GoogleAuthProvider();
-
 
 async function getMessage(db) {
   const citiesCol = collection(db, "test");
@@ -96,7 +52,7 @@ async function FirebaseSignup(mail, pass, fName, lName, selecRole) {
         last_name: lName,
         role: selecRole,
       });
-      
+
       console.log("user created:", cred.user);
       window.open("/list");
       // console.log("uid", user.uid);
@@ -108,28 +64,80 @@ async function FirebaseSignup(mail, pass, fName, lName, selecRole) {
     });
 }
 
-
 // signin users
 async function FirebaseSignIn(mail, pass) {
   signInWithEmailAndPassword(auth, mail, pass)
-  .then((userCredential) => {
-    // Signed in
-        const user = userCredential.user;
-        console.log(user)
-        window.location = "/list";
-        // console.log('uid',user.uid)
-        // console.log('cu',cUser)
-        // console.log('email',cUser.email)
-        // ...
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+      window.location = "/list";
+      // console.log('uid',user.uid)
+      // console.log('cu',cUser)
+      // console.log('email',cUser.email)
+      // ...
     })
     .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode,errorMessage)
-        console.log("invalid signin")
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      console.log("invalid signin");
     });
 }
 
+async function getPatients() {
+  const firebaseApp = initializeApp(firebaseConfig);
+  const db = getFirestore(firebaseApp);
+  const usersCol = collection(db, "users");
+  const userSnapshot = await getDocs(usersCol);
+  const userList = userSnapshot.docs.map((doc) => doc.data());
+  console.log(userList);
+  var list = []
+  userList.forEach(function(doc) {
+    var userName = doc.first_name + doc.last_name;
+    list.push(userName);
+    return list
+    // var last = ;
+    // console.log(userName);
+    // console.log(list);
+    // console.log(last);
+  });
+  // console.log(firstName);
+  // console.log(lastName);
+  // return cityList;
+}
+
+async  function getDashboardData(uid){
+  const firebaseApp = initializeApp(firebaseConfig);
+  const db = getFirestore(firebaseApp);
+  const docRef = doc(
+    db,
+    `users/${uid}/patient_details/profile`,
+  );
+  // const docRef  = collection(db, "users");
+  const docSnap = await getDoc(docRef);
+  console.log(" document!");
+  if (docSnap.exists()) {
+    console.log(" document! exists");
+    // console.log("Document data:", docSnap.data());
+  } else {
+    // docSnap.data() will be undefined in this case
+    console.log("No such document!");
+  }
+  return docSnap.data()
+
+  // const userList = docSnap.docs.map((doc) => doc.data());
+  // console.log(userList);
+  // console.lob(docSnap.data())
+  // profileDoc.data()
+  // profileDoc.forEach(doc=>{
+  //   console.log("hello", doc.data());
+
+  // })
+  // console.log(profileDoc)
+  // const userSnapshot = await getDocs(usersCol)
+  
+}
 // // subscribing to auth changes
 // onAuthStateChanged(auth,(user)=>{
 //       console.log("user status changed:",user);
@@ -163,4 +171,4 @@ async function FirebaseSignIn(mail, pass) {
 
 // console.log("cu", cUser);
 // console.log("email", cUser.email);
-export { auth, FirebaseSignup , FirebaseSignIn};
+export { auth, FirebaseSignup, FirebaseSignIn, getPatients, getDashboardData };
