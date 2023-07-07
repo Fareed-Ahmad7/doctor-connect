@@ -4,14 +4,17 @@ import s from "../assets/s.jpg"
 import c from "../assets/chart.png"
 import h from "../assets/Hr.png"
 import t from "../assets/temperature.png"
+import { useParams } from 'react-router-dom';
 import { getDashboardData } from "../index";
 
 const Dashboard = () => {
   // let UserData 
+  const {id} = useParams();
+  console.log(id)
      const [UserData, setUserData] = useState([]);
     useEffect(() => {
       const fetchData = async () => {
-        const UserData = await getDashboardData("ScGpZyYpMCvGRIKZ4iNk");
+        const UserData = await getDashboardData(id);
       //  UserData.then(function(result) {
         //     });
         

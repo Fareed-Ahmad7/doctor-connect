@@ -7,48 +7,14 @@ import { getPatients } from "../index";
 // console.log("list", list);
 const Paitents = () => {
   const [persons, setPersons] = useState([
-    // list,
-    // {
-    //   name: "Freead",
-    //   id: 1,
-    // },
-    // {
-    //   name: "Tom",
-    //   id: 2,
-    // },
-    // {
-    //   name: "Harry",
-    //   id: 3,
-    // },
-    // {
-    //   name: "Jack",
-    //   id: 4,
-    // },
-
-    // {
-    //   name: "Snape",
-    //   id: 5,
-    // },
-
-    // {
-    //   name: "Snape",
-    //   id: 6,
-    // },
-
-    // {
-    //   name: "Snape",
-    //   id: 7,
-    // },
-
-    // {
-    //   name: "Snape",
-    //   id: 8,
-    // },
-
-    // {
-    //   name: "Snape",
-    //   id: 9,
-    // },
+    {
+      name: "John",
+      id: "6BcSVfuVzLqmBdtDEB1J",
+    },
+    {
+      name: "Chandu",
+      id: "chanduid",
+    },
   ]);
 
   // useEffect(() => {
@@ -65,7 +31,7 @@ const Paitents = () => {
       <div className="card">
         <header className="">
           <h2>Paitents</h2>
-          <Link to="/dashboard/patient/90">
+          <Link to={`/dashboard/6BcSVfuVzLqmBdtDEB1J`}>
             <div className="FollowersCard">
               {/* <form>here{persons && persons.length && persons.map(listItem => listItem)}</form> */}
               {/* return <User person={persons}/>; */}
