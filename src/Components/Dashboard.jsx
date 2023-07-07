@@ -4,17 +4,13 @@ import s from "../assets/s.jpg"
 import c from "../assets/chart.png"
 import h from "../assets/Hr.png"
 import t from "../assets/temperature.png"
+import { useParams } from 'react-router-dom';
+
+
 const Dashboard = () => {
- 
-    const userData =   {
-      date: "2023-06-28",
-      BP: [120, 122, 118, 124, 116],
-      HR: [80, 82, 78, 85, 75],
-      TEMP: [98.6, 98.4, 98.8, 99.2, 98.7],
-    }
-    const bp = 98
-
-
+  const {id} = useParams();
+  console.log(id)
+   
 
 
 

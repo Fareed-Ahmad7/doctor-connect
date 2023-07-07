@@ -5,45 +5,12 @@ import { Link } from "react-router-dom";
 const Paitents = () => {
   const [persons, setPersons] = useState([
     {
-      name: "Freead",
-      id: 1,
+      name: "John",
+      id: "6BcSVfuVzLqmBdtDEB1J",
     },
     {
-      name: "Tom",
-      id: 2,
-    },
-    {
-      name: "Harry",
-      id: 3,
-    },
-    {
-      name: "Jack",
-      id: 4,
-    },
-
-    {
-      name: "Snape",
-      id: 5,
-    },
-
-    {
-      name: "Snape",
-      id: 6,
-    },
-
-    {
-      name: "Snape",
-      id: 7,
-    },
-
-    {
-      name: "Snape",
-      id: 8,
-    },
-
-    {
-      name: "Snape",
-      id: 9,
+      name: "Chandu",
+      id: "chanduid",
     },
   ]);
 
