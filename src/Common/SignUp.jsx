@@ -2,7 +2,8 @@
 import "../Styles/SignUp.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import { FirebaseSignup } from "../index";
+
 
 const SignUp = () => {
   const [selectedRole, setSelectedRole] = useState("");
@@ -33,29 +34,8 @@ const SignUp = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    const data = {
-      email,
-      password,
-      firstName,
-      lastName,
-      selectedRole,
-    };
-    console.log("handleSignUp");
-    console.log(data);
+    await FirebaseSignup(email,password,firstName,lastName,selectedRole)
 
-    try {
-      const response = await axios.post("http://localhost:4000/signup", {
-        email,
-        password,
-        firstName,
-        lastName,
-        selectedRole,
-      });
-      console.log(response.data); // handle the response as per your requirement
-      // navigate("/allquestions");
-    } catch (error) {
-      console.error(error);
-    }
   };
   return (
     <>
