@@ -7,7 +7,7 @@ const LandingPage = () => {
         <div className="landing-content">
         <div className="landing-text">
         <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing.
+          Bridging Doctors and Patients for a Better Tomorrow
         </h1>
         </div>
         <img className='landing-img' src={landingimg} alt="" />
